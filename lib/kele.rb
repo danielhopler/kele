@@ -1,4 +1,4 @@
-require 'httparty'
+require "httparty"
 
 class Kele
 	include HTTParty
