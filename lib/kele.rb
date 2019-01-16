@@ -1,4 +1,5 @@
 require "httparty"
+require "json"
 
 class Kele
 	include HTTParty
@@ -11,6 +12,12 @@ class Kele
 			puts "#{email} not found!"
 		else
 			@auth_token = post_response["auth_token"]
+			puts "#{email} logged in!"
 		end
+	end
+
+	def get_me
+		response = self.class.get('/users/me', headers: { "authorization" => @auth_token })
+		JSON.parse response.body, symbolize_names: true
 	end
 end
