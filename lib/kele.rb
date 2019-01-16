@@ -5,10 +5,10 @@ class Kele
 
 	base_uri 'https://www.bloc.io/api/v1'
 
-	def initialize(username, password)
-		post_response = self.class.post('/sessions', body: {username: username, password: password})
+	def initialize(email, password)
+		post_response = self.class.post('/sessions', body: {email: email, password: password})
 		if post_response.code == 404
-			puts "#{username} not found!"
+			puts "#{email} not found!"
 		else
 			@auth_token = post_response["auth_token"]
 		end
