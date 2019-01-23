@@ -32,4 +32,18 @@ class Kele
 		JSON.parse response.body
 	end
 
+	def create_message(sender, recipient, subject, msg, token = nil)
+		if token == nil
+			post_response = self.class.post('/messages', headers: { "authorization" => @auth_token }, body: {"sender": sender, "recipient_id": recipient, "subject": subject, "stripped-text": msg})
+		else
+			post_response = self.class.post('/messages', headers: { "authorization" => @auth_token }, body: {"sender": sender, "recipient_id": recipient, "token": token, "subject": subject, "stripped-text": msg})
+		end
+
+		if post_response.success?
+			puts "Your message was sent!"
+		else
+			puts "There was an error sending your message."
+		end
+	end
+
 end
