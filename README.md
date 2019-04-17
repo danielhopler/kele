@@ -18,8 +18,10 @@ gem install ./kele-0.0.1.gem
 ```
 * Run gem with irb
 ```
-irb
-require './lib/kele'
+$ irb
+ >> require './lib/kele'
  => true
- >> k = Kele.new("Bloc email", "Bloc Password")
+ >> kele_client = Kele.new("Bloc email", "Bloc Password")
  ```
+
+ 
